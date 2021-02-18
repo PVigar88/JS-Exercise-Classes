@@ -85,13 +85,13 @@ class Airplane {
     this.tank += gallons;
    }
    drive(distance) {
-    if (distance / milesPerGallon > tank) {
-      this.odometer += (tank * milesPerGallon);
+    if (distance / this.milesPerGallon > this.tank) {
+      this.odometer += (this.tank * this.milesPerGallon);
       this.tank = 0;
       return `I ran out of fuel at ${this.odometer} miles!`;
     }
     else {
-      this.tank -= (distance / milesPerGallon);
+      this.tank -= (distance / this.milesPerGallon);
       this.odometer += distance;
     }
    }
@@ -110,10 +110,10 @@ class Airplane {
           + {name} and {location} of course come from the instance's own properties.
   */
  class Lambdasian {
-   constructor(name, age, location) {
-     this.name = name;
-     this.age = age;
-     this.location = location;
+   constructor(attrs) {
+     this.name = attrs.name;
+     this.age = attrs.age;
+     this.location = attrs.location;
    }
    speak() {
      return `Hello my name is ${this.name}, I am from ${this.location}`;
@@ -171,14 +171,18 @@ class Airplane {
      this.favSubjects = lambda.favSubjects;
    }
    listSubjects() {
-     let favString;
-     this.listSubjects.forEach()
+     let favString ='Loving ';
+     this.favSubjects.forEach(subject => {
+       favString = favString + subject;
+     })
+     favString = favString + '!';
+     return favString;
    }
-   PRAssignment() {
-     
+   PRAssignment(subject) {
+     return `${this.name} has submitted a PR for ${subject}`
    }
-   sprintChallenge() {
-     
+   sprintChallenge(subject) {
+     return `${this.name} has begun sprint challenge on ${subject}`;
    }
  }
   
@@ -195,8 +199,18 @@ class Airplane {
           + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
- class ProjectManager {
-     
+ class ProjectManager extends Instructor{
+   constructor(instrAtts) {
+     super(instrAtts);
+     this.gradClassName = instrAtts.gradClassName;
+     this.favInstructor = instrAtts.favInstructor
+   }
+   standUp(channel) {
+     return `${this.name} announces to ${channel}, @channel standy times!`;
+   }
+   debugsCode(student, subject) {
+     return `${this.name}debugs ${student.name}'s code on ${subject}`;
+   }
  }
   /*
     STRETCH PROBLEM (no tests!)
