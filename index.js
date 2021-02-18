@@ -42,7 +42,22 @@ class Airplane {
   */
   
  class Person {
-    
+   constructor(name, age) {
+     this.name = name;
+     this.age = age;
+     this.stomach = [];
+   }
+   eat(someFood) {
+    if (this.stomach.length < 10) {
+      this.stomach.push(someFood);
+     }
+   }
+   poop() {
+    this.stomach.splice(0, this.stomach.length);
+   }
+   toString() {
+    return `${this.name}, ${this.age}`;
+   }
   }
   
   /*
@@ -60,7 +75,26 @@ class Airplane {
   */
   
  class Car {
-    
+   constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+   }
+   fill(gallons) {
+    this.tank += gallons;
+   }
+   drive(distance) {
+    if (distance / milesPerGallon > tank) {
+      this.odometer += (tank * milesPerGallon);
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+    else {
+      this.tank -= (distance / milesPerGallon);
+      this.odometer += distance;
+    }
+   }
   }
   
   /*
@@ -76,7 +110,14 @@ class Airplane {
           + {name} and {location} of course come from the instance's own properties.
   */
  class Lambdasian {
-    
+   constructor(name, age, location) {
+     this.name = name;
+     this.age = age;
+     this.location = location;
+   }
+   speak() {
+     return `Hello my name is ${this.name}, I am from ${this.location}`;
+   }
   }
   
   /*
@@ -93,8 +134,15 @@ class Airplane {
           + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
           + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
   */
- class Instructor {
-
+ class Instructor extends Lambdasian{
+   constructor(lambda) {
+     super(lambda.name);
+     super(lambda.age);
+     super(lambda.location);
+     this.specialty = lambda.specialty;
+     this.favLanguage = lambda.favLanguage;
+     this.catchPhrase = lambda.catchPhrase;
+    }
  }
   /*
     TASK 5
