@@ -136,13 +136,17 @@ class Airplane {
   */
  class Instructor extends Lambdasian{
    constructor(lambda) {
-     super(lambda.name);
-     super(lambda.age);
-     super(lambda.location);
+     super(lambda);
      this.specialty = lambda.specialty;
      this.favLanguage = lambda.favLanguage;
      this.catchPhrase = lambda.catchPhrase;
-    }
+   }
+   demo(subject) {
+     return `Today we are learning about ${subject}`;
+   }
+   grade(student, subject) {
+     return `${student.name} receives a perfect score on ${subject}`
+   }
  }
   /*
     TASK 5
